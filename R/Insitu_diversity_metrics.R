@@ -98,7 +98,7 @@ plotDeMoney <- function(x0, y0, x1, y1, mean, dot){
 }
 
 # now create the plot for alpha at SJER
-plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 3, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(alpha))), las = 1, xlab = expression(paste(italic("q"))), main = "SJER")
+plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 3, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(alpha))), las = 1, xlab = expression(paste(italic("q"))), main = expression(paste("SJER ", italic(" in situ"))))
 axis(1, at = c(0, 1, 2, 3, 4, 5))
 # populate the plot
 for(i in 1:6){
@@ -108,7 +108,7 @@ for(i in 1:6){
 
 
 # create plot for alpha diversity at SOAP
-plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 6, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(alpha))), las = 1, xlab = expression(paste(italic("q"))), main = "SOAP")
+plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 6, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(alpha))), las = 1, xlab = expression(paste(italic("q"))), main = expression(paste("SOAP ", italic(" in situ"))))
 axis(1, at = c(0, 1, 2, 3, 4, 5))
 # populate the plot
 for(i in 1:6){
@@ -119,7 +119,7 @@ for(i in 1:6){
 ### Create plots for beta diversity
 
 # now create the plot for beta at SJER
-plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 4.2, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(beta))), las = 1, xlab = expression(paste(italic("q"))), main = "SJER")
+plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 4.2, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(beta))), las = 1, xlab = expression(paste(italic("q"))), main = expression(paste("SJER ", italic(" in situ"))))
 axis(1, at = c(0, 1, 2, 3, 4, 5))
 # populate the plot
 for(i in 1:6){
@@ -127,7 +127,7 @@ for(i in 1:6){
 }
 
 # create plot for beta diversity at SOAP
-plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 6, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(beta))), las = 1, xlab = expression(paste(italic("q"))), main = "SOAP")
+plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 6, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(beta))), las = 1, xlab = expression(paste(italic("q"))), main = expression(paste("SOAP ", italic(" in situ"))))
 axis(1, at = c(0, 1, 2, 3, 4, 5))
 # populate the plot
 for(i in 1:6){
@@ -136,9 +136,8 @@ for(i in 1:6){
 
 
 ### lastly the plots for gamma diversity
-
 # now create the plot for gamma at SJER
-plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 12, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(gamma))), las = 1, xlab = expression(paste(italic("q"))), main = "SJER")
+plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 12, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(gamma))), las = 1, xlab = expression(paste(italic("q"))),main = expression(paste("SJER ", italic(" in situ"))))
 axis(1, at = c(0, 1, 2, 3, 4, 5))
 # populate the plot
 for(i in 1:6){
@@ -146,13 +145,13 @@ for(i in 1:6){
 }
 
 # create the plot for gamma diversity at SOAP
-plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 18, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(gamma))), las = 1, xlab = expression(paste(italic("q"))), main = "SOAP")
+plot(x = seq(from = 0, to = 5, length.out = 4), y = seq(from = 0, to = 18, length.out = 4), xaxt = "n", type = "n", ylab = expression(paste(italic(gamma))), las = 1, xlab = expression(paste(italic("q"))), main = expression(paste("SOAP ", italic(" in situ"))))
 axis(1, at = c(0, 1, 2, 3, 4, 5))
 # populate the plot
 for(i in 1:6){
   plotDeMoney(x0 = i - 1, y0 = SOAP.out.g[i , 1] - SOAP.out.g[i, 2], x1 = i - 1, y1 = SOAP.out.g[i , 1] + SOAP.out.g[i, 2], mean = SOAP.out.g[i, 1], dot = i - 1)
 }
-```
+
 
 ### ordinate the first two PCs using quantitative data (could also use incidence)
 
