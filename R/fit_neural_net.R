@@ -24,9 +24,6 @@ insitu_path <- "data/D17_2013_vegStr.csv"
 plants <- read.csv(insitu_path, stringsAsFactors = FALSE) %>%
   filter(siteid == 'SJER')
 
-plot(x = plants$easting, 
-       y = plants$northing, col = 'blue', cex = .2)
-
 # check that all plots are in both datasets
 all(plants$plotid %in% names(cubes))
 length(setdiff(plants$plotid, names(cubes))) == 0
@@ -56,7 +53,7 @@ crs(plant_coords) <- crs(cubes[[1]])
 # data at the plant locations
 is_hs_column <- grepl(pattern = "nm_", x = names(plants))
 for (i in seq_along(cubes)) {
-  hs_subset <- extract(cubes[[i]], plant_coords)
+  hs_subset <- raster::extract(cubes[[i]], plant_coords)
   relevant_rows <- complete.cases(hs_subset)
   plants[relevant_rows, is_hs_column] <- hs_subset[relevant_rows, ]
 }
