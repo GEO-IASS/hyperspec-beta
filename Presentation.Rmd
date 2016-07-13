@@ -29,6 +29,7 @@ head(D17_veg)
 # test run with only SJER data
 CA_data <- D17_veg %>% group_by(plotid) %>% select(siteid, plotid, taxonid) 
 head(CA_data)
+dim(CA_data)
 
 # This will sum the number of each species idnetified in each plot 
 CA_sites <- table(CA_data$plotid, CA_data$taxonid)
@@ -38,17 +39,14 @@ dim(CA_sites[, colSums(CA_sites^2) == 0]) # No columns are completely empty
 
 # Parse into SJER site
 SJER_site <- CA_sites[1:18, ]
-dim(SJER_site)
+SJER_site <- SJER_site[, colSums(SJER_site != 0) > 0] 
 head(SJER_site)
-tail(SJER_site)
-
-dim(SJER_site[, colSums(SJER_site^2) == 0]) # 14 species not found at any SJER plot
+dim(SJER_site) # 11 plant species found in SJER site
 ```
 
-### With our data parsed we can estimate D for the SJER and SOAP sites
-# this is a one off to run the function automatically for and only use three arguements
+### With our data parsed we can estimate D for the SJER site
 ```{r ch2}
-# Now a more general function to calculate for a range of values
+# A general function to calculate for a range of values
 D.iter.q <- function(data, level, q){
 Spoon <- matrix(data = NA, ncol = 2, nrow = 6)
   for (i in 1:6){
@@ -188,5 +186,4 @@ axis(1, at = c(0, 1, 2, 3, 4, 5))
 for(i in 1:6){
   plotDeMoney(x0 = i - 1, y0 = SJER.HSI.g[i , 1] - SJER.HSI.g[i, 2], x1 = i - 1, y1 = SJER.HSI.g[i , 1] + SJER.HSI.g[i, 2], mean = SJER.HSI.g[i, 1], dot = i - 1)
 }
-
 ```
